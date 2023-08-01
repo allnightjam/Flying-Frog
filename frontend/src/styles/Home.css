@@ -3,18 +3,15 @@
   --light-green: #588157;
 
 }
+
 .home-header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 500px; 
-  padding-top: 160px; 
-  background-image: url('../../../src/images/TitleNav.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 23.6875em; 
+  height: 100px; 
+  padding-top: 10px; 
   background-color:var(--light-green);
 }
 
@@ -80,19 +77,21 @@ div.home-container {
 }
 
 .home-article-grid {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25em;
   padding-left: 7.5%;
   padding-right: 7.5%;
   padding-top: 4em;
   padding-bottom: 2em;
-  background-color: var(--dark-green);
+  background-color: var(--dark-green); */
+  display: flex;
+  overflow: hidden;
 }
 
-.home-article-item.home-full-width {
-  grid-column: 1 / -1;
-  grid-row: 1 / span 2;
+.home-article-grid .home-article-item {
+  min-width: 100%;
+  transition: transform 0.3s ease-in-out;
 }
 
 .home-review-content:hover {

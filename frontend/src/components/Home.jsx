@@ -11,8 +11,9 @@ import RunGameImage from '../../../src/images/RunGame.png';
 import ColorJumpImage from '../../../src/images/ColorJump.png';
 
 const Home = () => {
+  
   const [art, setArt] = useState([]);
-
+  
   useEffect(() => {
     const getArt = async () => {
       try {
@@ -24,9 +25,9 @@ const Home = () => {
     };
     getArt();
   }, []);
-
+  
   const [articles, setArticles] = useState([]);
-
+  
   useEffect(() => {
     const getArticles = async () => {
       try {
@@ -38,9 +39,9 @@ const Home = () => {
     };
     getArticles();
   }, []);
-
+  
   const [reviews, setReviews] = useState([]);
-
+  
   useEffect(() => {
     const getReviews = async () => {
       try {
@@ -52,29 +53,20 @@ const Home = () => {
     };
     getReviews();
   }, []);
+  
+  const [currentArticleIndex, setCurrentArticleIndex] = useState(0);
 
   return (
     <div className='home-container'>
       <div className='home-header-section'>
       </div>
-      <div className='home-text'>
-        Welcome to Flying Frog, the premier online destination created by gamers, 
-          for gamers. Our mission is to foster a vibrant community where gamers of 
-          all backgrounds can come together to celebrate their shared passion. With 
-          a focus on fan art, reviews, articles, games, and an engaging forum, 
-          Flying Frog provides a platform for gamers to connect, collaborate, 
-          and inspire one another. We believe in the power of gaming to unite and 
-          create meaningful experiences, and our goal is to provide a welcoming space 
-          where everyone feels valued and included. Join us on this exciting journey 
-          as we build a community that embraces the true spirit of gaming.
-        </div>
       <div className="home-articles-container">
         <h2>Articles</h2>
         <div className="home-article-grid">
           {articles.map((article, index) => (
-            <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
+            <div key={article.id} className="home-article-item" style={{transform : `translateX(calc(-100% * ${currentArticleIndex - index}))`}}>
               <Link to={`/article/${article.id}`} className='article-link'>
-                <div className={`home-article-content ${index === 0 ? 'home-article-first' : ''}`}>
+                <div className="home-article-content">
                   <div className="article-image-container">
                     <img src={article.header_image} alt="" className="article-image" />
                   </div>
@@ -85,6 +77,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+      <button onClick={() => setCurrentArticleIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : articles.length - 1))}>Previous</button>
+      <button onClick={() => setCurrentArticleIndex((prevIndex) => (prevIndex < articles.length - 1 ? prevIndex + 1 : 0))}>Next</button>
       <div className="reviews-container">
         <h2>Reviews</h2>
         <div className="home-review-grid">

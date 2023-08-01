@@ -19,16 +19,16 @@ const MainArticle = () => {
   }, []);
 
   return (
-    <div className="home-articles-container">
+    <div className="main-articles-container">
     <h2 className="main-articles-title">Articles</h2>
     <Link to={`/submitarticle`}>
       <button className="main-articles-submit">Submit An Article</button>
     </Link>
-    <div className="home-article-grid">
+    <div className="main-article-grid">
       {articles.map((article, index) => (
-        <div key={article.id} className={`home-article-item ${index === 0 ? 'home-full-width' : 'home-grid-item'}`}>
+        <div key={article.id} className={`main-article-item ${index === 0 ? 'main-full-width' : 'home-grid-item'}`}>
           <Link to={`/article/${article.id}`} className='article-link'>
-            <div className={`home-article-content ${index === 0 ? 'home-article-first' : ''}`}>
+            <div className={`main-article-content ${index === 0 ? 'main-article-first' : ''}`}>
               <div className="article-image-container">
                 <img src={article.header_image} alt="" className="article-image" />
               </div>

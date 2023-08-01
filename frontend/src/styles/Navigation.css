@@ -14,8 +14,9 @@ header {
 }
 
 .logo {
-  width: 130px;
+  width: 5em;
   height: auto;
+  padding-left: 4em;
 }
 
 .user-text {
